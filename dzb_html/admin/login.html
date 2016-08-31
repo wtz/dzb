@@ -1,0 +1,120 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>湖北师范学院党政办公室后台登录</title>
+<style type="text/css">
+<!--
+/*版权所有：wtz制作*/
+*{overflow:hidden; font-size:9pt;}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(images/bg.gif);
+	background-repeat: repeat-x;
+}
+-->
+</style>
+<script language="JavaScript"> 
+function correctPNG()  // 用JS实现,加上一段js代码后,所有插入的透明png自动透明了.（注意，这方法也是只对直接插入的图片有效，对背景图无效） 
+{ 
+    var arVersion = navigator.appVersion.split("MSIE") 
+    var version = parseFloat(arVersion[1]) 
+    if ((version >= 5.5) && (document.body.filters)) 
+    { 
+       for(var j=0; j<document.images.length; j++) 
+       { 
+          var img = document.images[j] 
+          var imgName = img.src.toUpperCase() 
+          if (imgName.substring(imgName.length-3, imgName.length) == "PNG") 
+          { 
+             var imgID = (img.id) ? "id='" + img.id + "' " : "" 
+             var imgClass = (img.className) ? "class='" + img.className + "' " : "" 
+             var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' " 
+             var imgStyle = "display:inline-block;" + img.style.cssText 
+             if (img.align == "left") imgStyle = "float:left;" + imgStyle 
+             if (img.align == "right") imgStyle = "float:right;" + imgStyle 
+             if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle 
+             var strNewHTML = "<span " + imgID + imgClass + imgTitle 
+             + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";" 
+             + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader" 
+             + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" 
+             img.outerHTML = strNewHTML 
+             j = j-1 
+          } 
+       } 
+    }     
+} 
+window.attachEvent("onload", correctPNG); 
+</script>
+
+
+<script type="text/javascript">
+function checkout(login){
+	if(document.login.username.value == ""){
+		alert("用户名不能为空！");
+		document.login.username.focus();
+		return false;
+	}
+
+	if(document.login.password.value == ""){
+		alert("密码不能为空！");
+		document.login.password.focus();
+		return false;
+	}
+
+
+}
+</script>
+
+
+</head>
+<body>
+<table width="100%"  height="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="561" style="background:url(images/lbg.gif)"><table width="940" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="238" style="background:url(images/login01.jpg)">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="190"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="208" height="190" style="background:url(images/login02.jpg)">&nbsp;</td>
+                <td width="518" style="background:url(images/login03.jpg)"><table  width="450"  border="0" align="center" cellpadding="0" cellspacing="0">
+                <form name="login" id="login" action="check_login.php" method="post" onSubmit="return checkout(this);">
+                  <tr>
+                    <td width="128" rowspan="4" valign="top" ><img src="images/Manager.png" /></td>
+                    <td width="75" height="39" align="center">用户名：</td>
+                    <td width="247" height="39" align="left"><input type="text" name="username" id="username" style="width:160px; height:25px; line-height:34px; background:url(images/inputbg.gif) repeat-x; border:solid 1px #d1d1d1; font-size:9pt; font-family:Verdana, Geneva, sans-serif;"></td>
+                  </tr>
+                  <tr>
+                    <td height="39" align="center">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+                    <td height="39" align="left"><input type="password" name="password" id="password" style="width:160px; height:25px; line-height:34px; background:url(images/inputbg.gif) repeat-x; border:solid 1px #d1d1d1; font-size:9pt; "></td>
+                  </tr>
+                    <tr>
+                    <td height="37" align="center">验证码：</td>
+                    <td height="37" align="left"><input type="text" name="yzm" id="yzm" size="4" style=" height:25px; line-height:34px; background:url(images/inputbg.gif) repeat-x; border:solid 1px #d1d1d1; font-size:9pt; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="yzm.php" /></td>
+                  </tr>
+                  <tr>
+                    <td height="60">&nbsp;</td>
+                    <td height="60"><input type="image" src="images/login.gif" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="image" src="images/btn2_05.jpg" onClick="document.login.reset();return false;" /></td>
+                  </tr></form>
+                </table></td>
+                <td width="214" style="background:url(images/login04.jpg)" >&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="133" style="background:url(images/login05.jpg)">&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

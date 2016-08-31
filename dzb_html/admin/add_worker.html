@@ -1,0 +1,45 @@
+<table id="xinwentianjia" summary="新闻添加">
+          <caption>
+          工作人员添加
+          </caption>
+          <tbody><tr>
+            <td align="center" valign="middle" class="mytd"><label for="username">姓名：</label></td>
+            <td><input type="text" name="e_name"></td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" class="mytd"><label for="newpasswords">职务：</label></td>
+            <td><select name="e_duty">
+                <option value="主任">主任</option>
+                <option value="副主任">副主任</option>
+                <option value="主任科员">主任科员</option>
+                <option value="小车队队长">小车队队长</option>
+                <option value="科员">科员</option>
+                <option value="打字员">打字员</option>
+                <option value="车队司机">车队司机</option>
+                <option value="收发室工作人员">收发室工作人员 </option>
+            </select></td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" class="mytd">工作职责：</td>
+            <td><textarea name="e_respon" cols="45" rows="10" style="overflow:hidden;" onkeydown="gbcount(this.form.e_respon,this.form.total,this.form.used,this.form.remain);" onkeyup="gbcount(this.form.e_respon,this.form.total,this.form.used,this.form.remain);"></textarea><p>最多字数：
+<input disabled="" maxlength="4" name="total" size="3" value="150" class="inputtext">
+已用字数：
+<input disabled="" maxlength="4" name="used" size="3" value="0" class="inputtext">
+剩余字数：
+<input disabled="" maxlength="4" name="remain" size="3" value="50" class="inputtext">
+</p></td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" class="mytd">办公地点：</td>
+            <td valign="top"><input type="text" name="e_workspace"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><label>
+                <input type="submit" name="sure" id="sure" value="确认">
+              </label>
+              <label>
+                <input type="reset" name="reset" id="reset" value="重填">
+              </label></td>
+          </tr>
+        </tbody></table>

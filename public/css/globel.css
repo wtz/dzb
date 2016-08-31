@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+/*-----------create by wutianzhi data 2009-11-04----------------*/
+* {
+	margin:0;
+	padding:0
+}
+body {
+	font:12px Arial, Helvetica, sans-serif;
+	background: url(../images/bg.gif) repeat-x;
+}
+
+ul {
+	list-style:none;
+}
+img {
+	border:0;
+}
+.clear {
+	clear:both;
+}
+a {
+	text-decoration:none;
+	color:#5f4b32;
+	outline:none;
+}
+a:hover {
+	
+	color:#9c784a;
+}

@@ -1,0 +1,113 @@
+#xinwentianjia {
+	font-size:12px;
+	border-collapse:collapse;
+	width:720px;
+	margin: 10px;
+	margin-left:50px;
+}
+#xinwentianjia caption {
+	padding-bottom:10px;
+	font-size:12px;
+	font-weight:bold;
+}
+#xinwentianjia th, td {
+	border:1px solid #ccc;
+	padding:5px 10px;
+}
+input[type="text"]:focus {
+	background:#EBF9FA;
+}
+#xinwentianjia .ltitle {
+	padding-right:10px;
+}
+#xinwentianjia #tips {
+	color:#FF0000;
+}
+#xinwenyulan {
+	border-collapse:collapse;
+	margin: 10px;
+	margin-left:50px;
+}
+#xinwenyulan caption, #glygl caption {
+	padding-bottom:5px;
+	font-size:12px;
+	font-weight:bold;
+}
+.b {
+	width:0px;
+}
+.a {
+	width:5px;
+}
+.c {
+	width:300px;
+}
+.d {
+	width:150px;
+}
+#xinwenyulan th {
+	background:url(../images/table_th.gif) repeat-x;
+}
+#xinwenyulan th, td {
+	border:1px solid #ccc;
+	padding:5px 20px;
+	font-weight:normal;
+}
+#xinwenyulan .sed {
+	padding-right:5px;
+	font-weight:bold;
+	text-align:center;
+}
+#xinwenyulan .blue {
+	background:#DBECF4;
+}
+#xinwenyulan tr:hover {
+	background:#0066CC;
+	color:#fff;
+}
+#xinwenyulan tr:hover th {
+	color:#000;
+}
+#form2 {
+	text-align:center;
+}
+#xinwenyulan .sed a {
+	color:red;
+}
+#xinwenyulan .sed a:hover {
+	color:#fff;
+	text-decoration:underline;
+}
+#glygl {
+	margin: 20px;
+	border-collapse:collapse;
+	width:500px;
+}
+#glygl th, #glygl td {
+	padding:5px 10px;
+}
+.mytd {
+	text-align:right;
+}
+#glygl #tjgly {
+	text-align:center;
+	font-weight:bold;
+}
+#tjgly a {
+	color:red;
+}
+#tjgly a:hover {
+	text-decoration:underline;
+}
+#modify {
+	border-collapse:collapse;
+	margin: 10px;
+	margin-left:50px;
+	 width:550px;
+}
+#modify caption {
+	padding-bottom:5px;
+	font-size:12px;
+	font-weight:bold;
+}
+#modify  #title{ text-align:left;}

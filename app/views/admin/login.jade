@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+
+  h1 登录
+  form
+      p
+        label 用户名:
+        input(type="text",name="usrname")
+      p
+        label 密码:
+        input(type="password",name="password")
+      p
+        label 验证码:
+        input(type="text",name="yzm")
+        img(src="/admin/users/captcha")
+      p
+        label &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        input(type="submit")
+

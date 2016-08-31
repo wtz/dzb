@@ -3,6 +3,9 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Article = mongoose.model('Article');
 
+
+
+// 前端路由入口
 module.exports = function (app) {
   app.use('/', router);
 };
@@ -16,3 +19,4 @@ router.get('/', function (req, res, next) {
     });
   });
 });
+
