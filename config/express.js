@@ -5,6 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
 var compress = require('compression');
 var methodOverride = require('method-override');
 
@@ -12,7 +15,7 @@ module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
-  
+   
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'jade');
 
@@ -23,6 +26,14 @@ module.exports = function(app, config) {
     extended: true
   }));
   app.use(cookieParser());
+//  将session值存放mongodb 里面持久化
+  app.use(session({
+    secret: 'dzb',
+    store: new MongoStore({
+       url: 'mongodb://localhost/dzb-development',
+       collection: 'sessions'
+    })
+  }))
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
@@ -33,9 +44,9 @@ module.exports = function(app, config) {
   });
 
   app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+          var err = new Error('Not Found');
+          err.status = 404;
+          next(err);    
   });
   
   if(app.get('env') === 'development'){

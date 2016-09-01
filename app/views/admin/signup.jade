@@ -1,9 +1,8 @@
 extends ../layout
 
 block content
-
-  h1 登录
-  form(name="user", method="post",action="/admin/users/login")
+  h1 注册
+  form(name="user", method="post",action="/admin/users/signup")
       p
         label 用户名:
         input(type="text",name="user[name]")
@@ -11,10 +10,5 @@ block content
         label 密码:
         input(type="password",name="user[password]")
       p
-        label 验证码:
-        input(type="text",name="yzm")
-        img(src="/admin/users/captcha",width="100",height="30")
-      p
         label &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         input(type="submit")
-

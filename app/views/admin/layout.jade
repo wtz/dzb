@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title= title
+    block css
+      link(rel='stylesheet', href='/css/admin/globel.css')
+      link(rel='stylesheet', href='/css/admin/layout.css')
+      link(rel='stylesheet', href='/css/admin/table.css')
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+  body
+    #warpper
+      include header  
+      #content
+        #left
+          include sidebar  
+        #siderbar
+          div
+            block content
+        .clear
+       include footer
+
+    
+    
+    

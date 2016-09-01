@@ -1,0 +1,12 @@
+extends ./layout
+
+block content
+  h1 用户列表	
+  table(border="1")
+    each user in users
+      tr
+       td= user.name
+       td
+         a(href="#") 编辑
+       td
+         a(href="#") 删除
