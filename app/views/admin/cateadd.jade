@@ -1,0 +1,19 @@
+extends ./layout
+
+block content
+ table#xinwentianjia(summary='分类添加')
+  caption
+    | 新闻添加
+  tbody
+    tr
+      td.mytd(align='center', valign='middle')
+        label(for='newpasswords') 分类：
+      td
+        input(type='text', name='cate')
+    tr
+      td  
+      td
+        label
+          input#sure(type='submit', name='sure', value='确认')
+        label
+          input#reset(type='reset', name='reset', value='重填')

@@ -10,10 +10,11 @@ var  Category = mongoose.model('Category');
   }
 
 
-  // router.get('/lists', function(req, res, next) {
-  // 	// Post.find
-  // 	// res.render()
-  // })
+  router.get('/list', function(req, res, next) {
+  	res.render('admin/catelist',{
+        title:'分类'
+      })
+  })
 
   router.get('/add', function(req, res, next) {
   	res.render('admin/cateadd',{
