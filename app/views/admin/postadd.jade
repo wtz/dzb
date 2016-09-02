@@ -1,0 +1,35 @@
+extends ./layout
+
+block content
+  table#xinwentianjia(summary='新闻添加')
+  caption
+    | 新闻添加
+  tbody
+    tr
+      td.mytd(align='center', valign='middle')
+        label(for='username') 文章类型：
+      td
+        select(name='n_kind')
+          option(value='部门新闻') 部门新闻
+          option(value='教育新闻') 教育新闻
+          option(value='教育观点') 教育观点
+    tr
+      td.mytd(align='center', valign='middle')
+        label(for='newpasswords') 文章标题：
+      td
+        input(type='text', name='n_title')
+    tr
+      td.mytd(align='center', valign='middle') 作者：
+      td
+        input(type='text', name='n_author', value='湖北师范学院党政办公室')
+    tr
+      td.mytd(align='center', valign='middle') 内容：
+      td(valign='top')
+        textarea(name='n_content', cols='30', rows='10', style='display:none')
+    tr
+      td  
+      td
+        label
+          input#sure(type='submit', name='sure', value='确认')
+        label
+          input#reset(type='reset', name='reset', value='重填')

@@ -14,13 +14,18 @@ var  User = mongoose.model('User');
 
 // 后端路由入口
 module.exports = function(app) {
-    app.use('/admin/users', function(req, res, next) {
-        var _user = req.session.user;
-        if (_user) {
-            app.locals.USER = _user;
-        }
+    app.use('/admin/users', router);
+};
+
+// 没有登录，不能进入到后端页面
+// module.exports.requireLogin 这种方式可以
+module.exports.requireLogin = function (req, res, next) {
+    if (req.session.user) {
         next();
-    }, router);
+    } else {
+        // req.flash('error', '只有登录用户才能访问');
+        res.redirect('/admin/users/login');
+    }
 };
 
 
@@ -88,31 +93,39 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
 	var name = req.body.user.name;
 	var pwd = req.body.user.password;
+	var captcha = req.body.user.captcha;
 
-	User.findOne({ name: name }, function(err, user) {
-		if(err) console.log(err)		
+	console.log(captcha, req.session.captcha)
+	if(captcha == req.session.captcha){
+		User.findOne({ name: name }, function(err, user) {
+			if(err) console.log(err)		
 
-		if(!user){
-			res.redirect('/')	
-		}	
-
-		user.comparePassword(pwd, function(err, isMatch) {
-			if(err) console.log(err)
-
-			if(isMatch){
-				console.log('登录成功');
-				// 如何不做数据持久化。用户登录后，假如server 重启后，就清空掉session 的值
-				// 登录数据如何持久化 ,将 session 放进数据库里面mongodb
-				// 将该用户信息放进session 里面
-				req.session.user = user;
-				res.redirect('/admin/users/welcome')
-			}else{
-				console.log('密码错误')			
+			if(!user){
+				res.redirect('/')	
 			}	
 
-		})
-	})
+			user.comparePassword(pwd, function(err, isMatch) {
+				if(err) console.log(err)
 
+				if(isMatch){
+					console.log('登录成功');
+					// 如何不做数据持久化。用户登录后，假如server 重启后，就清空掉session 的值
+					// 登录数据如何持久化 ,将 session 放进数据库里面mongodb
+					// 将该用户信息放进session 里面
+					req.session.user = user;
+					res.redirect('/admin/users/welcome')
+				}else{
+					console.log('密码错误')			
+				}	
+
+			})
+		})	
+	}else {
+		console.log('验证码不正确')
+		req.flash('error', '验证码不正确');			
+		res.redirect('/admin/users/login')
+		 
+	}
 
 });
 
@@ -128,7 +141,7 @@ router.get('/welcome', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     delete req.session.user;
-    delete app.locals.USER;
+    // delete app.locals.USER;
     res.redirect('/')
 });
 
@@ -141,6 +154,7 @@ router.get('/captcha', function(req, res, next) {
     var ary = ccap.get();
     var txt = ary[0];
     var buf = ary[1];
+    req.session.captcha = txt;
     res.end(buf)
 });
 

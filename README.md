@@ -17,17 +17,16 @@ admin:
 
 // 公共信息
 //新闻分类
+
 category:{
 	id:id
-	type: []'notice' ||   //通知公告、每周会议，办公指南、规章制度
-			// 用印管理  会议安排   请示报告 ]
-
+	cate:[{id:1, name:'通知公告'},{id:2, name:'每周会议'}]
 }
 
 // 文章信息
 post:{
 	id:id
-	source: category.type  // 那个分类下的
+	source: category.cate.id  // 那个分类下的
 	author:''
 	create:
 	title:''

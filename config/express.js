@@ -7,6 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+// 提示组件
+var flash = require('connect-flash');
+var messages = require('express-messages');
+
 
 var compress = require('compression');
 var methodOverride = require('method-override');
@@ -25,6 +29,7 @@ module.exports = function(app, config) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+
   app.use(cookieParser());
 //  将session值存放mongodb 里面持久化
   app.use(session({
@@ -34,6 +39,22 @@ module.exports = function(app, config) {
        collection: 'sessions'
     })
   }))
+
+  app.use(flash())
+  // 提示信息
+  app.use(function (req, res, next) {
+        res.locals.messages = messages(req, res);
+        var _user = req.session.user;
+        if (_user) {
+            app.locals.USER = _user;
+        }
+        next();
+    });
+
+
+
+
+
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());

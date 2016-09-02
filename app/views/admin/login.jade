@@ -4,6 +4,7 @@ block content
 
   h1 登录
   form(name="user", method="post",action="/admin/users/login")
+      != messages()
       p
         label 用户名:
         input(type="text",name="user[name]")
@@ -12,7 +13,7 @@ block content
         input(type="password",name="user[password]")
       p
         label 验证码:
-        input(type="text",name="yzm")
+        input(type="text",name="user[captcha]")
         img(src="/admin/users/captcha",width="100",height="30")
       p
         label &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
