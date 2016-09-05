@@ -5,9 +5,12 @@ block content
   table#xinwenyulan
       caption
        | 分类列表	
-      tr
-       td
-       td
-         a(href="#") 编辑
-       td
-         a(href="#") 删除
+      each cate,index  in category 
+        tr
+          td= index
+          td
+            = cate.name
+          td   
+            a(href="/admin/cate/edit/#{cate._id}") 编辑
+          td
+            a(href="/admin/cate/delete/#{cate._id}") 删除

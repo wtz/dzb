@@ -2,61 +2,58 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-
+var ObjectId = Schema.Types.ObjectId
 
 
 var PostSchema = new Schema({
-  	name: { type: String, required: true},
-  	password: { type: String, required: true},
-  	//roal: { type: String, required: true}, // 第一次建立超级管理员的时候用到。后面用下面这个
-  	roal: { type: String, default:'editor'},
-  	created: { type: Date }
+  	category: {
+	    type: ObjectId,
+	    ref: 'Category'
+	  },
+	author: String,
+	title: String,
+	content: String,
+            pv: {// 浏览次数
+	    type: Number,
+	    default: 0
+	},
+             meta: {
+	    createAt: {
+	      type: Date,
+	      default: Date.now()
+	    },
+	    updateAt: {
+	      type: Date,
+	      default: Date.now()
+	    }
+	  }
 });
 
 
 
+PostSchema.pre('save', function(next) {
+  if (this.isNew) {
+    this.meta.createAt = this.meta.updateAt = Date.now()
+  }
+  else {
+    this.meta.updateAt = Date.now()
+  }
 
-// // 先生成10个单位的盐，然后将盐加入到密码中混合生成 hash
-// UserSchema.pre('save', function(next) {
-// 	var user = this;
-// 	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-// 		if(err) next(err)
-
-// 		bcrypt.hash(user.password, salt, function(err, hash) {
-// 			if(err) next(err)
-// 			user.password = hash;
-// 			next()	
-// 		})
-
-// 	})
-// })
-
-
-
-// UserSchema 实例方法&& 静态方法
-// UserSchema.methods = {
-// 	comparePassword: function(_password, cb) {
-// 		// 将用户传递来的密码 加盐 和传递过来的对比
-// 		bcrypt.compare(_password, this.password, function(err, isMatch) {
-// 			if(err) cb(err)
-// 			cb(null, isMatch)
-// 		})
-// 	}
-
-// }
+  next()
+})
 
 PostSchema.statics = {
-	fetch: function(cb) {
-		return this
-		     .find({})
-		     .sort('created')
-		     .exec(cb)
-	},
-	findById: function(id, cb) {
-		return this
-		      .findOne({_id: id})
-		      .exec(cb)
-	}
+  fetch: function(cb) {
+    return this
+      .find({})
+      .sort('meta.updateAt')
+      .exec(cb)
+  },
+  findById: function(id, cb) {
+    return this
+      .findOne({_id: id})
+      .exec(cb)
+  }
 }
 
 

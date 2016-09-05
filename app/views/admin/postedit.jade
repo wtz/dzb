@@ -1,10 +1,10 @@
 extends ./layout
 
 block content
-  form(method="post",action="/admin/post/add")
-    table#xinwentianjia(summary='新闻添加')
+  form(method="post",action="/admin/post/update/#{post._id}")
+    table#xinwentianjia(summary='文章编辑')
       caption
-        | 新闻添加
+        | 文章编辑
         tbody
           tr
             td.mytd(align='center', valign='middle')
@@ -12,20 +12,20 @@ block content
             td
               select(name='post[category]')
                 each cate in category
-                  option(value="#{cate._id}")= cate.name
+                  option(value="#{cate._id}", selected=cate._id.toString() == post.category.toString())= cate.name
           tr
             td.mytd(align='center', valign='middle')
               label(for='newpasswords') 文章标题：
             td
-              input(type='text', name='post[title]')
+              input(type='text', name='post[title]', value="#{post.title}")
           tr
             td.mytd(align='center', valign='middle') 作者：
             td
-              input(type='text', name='post[author]', value='湖北师范学院党政办公室')
+              input(type='text', name='post[author]', value="#{post.author}")
           tr
             td.mytd(align='center', valign='middle') 内容：
             td(valign='top')
-              textarea(name='post[content]', cols='30', rows='10', style='display:none2')
+              textarea(name='post[content]', cols='30', rows='10', style='display:none2')= post.content
           tr
             td  
             td

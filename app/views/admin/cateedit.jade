@@ -1,16 +1,16 @@
 extends ./layout
 
 block content
- form(method="post",action="/admin/cate/add")
-   table#xinwentianjia(summary='分类添加')
+ form(method="post",action="/admin/cate/edit/#{category._id}")
+   table#xinwentianjia(summary='分类编辑')
     caption
-      | 新闻添加
+      | 新闻编辑
     tbody
       tr
         td.mytd(align='center', valign='middle')
           label(for='newpasswords') 分类：
         td
-          input(type='text', name='category[name]')
+          input(type='text', name="category[name]",value=category.name)
       tr
         td  
         td
