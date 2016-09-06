@@ -2,11 +2,16 @@ doctype html
 html(lang='en')
   head
     meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width')
     title= title
     block css
-      link(rel='stylesheet', href='/css/style.css')
+      link(href='css/globel.css', rel='stylesheet', type='text/css')
+      link(href='css/layout.css', rel='stylesheet', type='text/css')
     block js
+      script(type='text/javascript', src='js/external.js')
+      script(type='text/javascript', src='js/news_tab.js')
+      // compliance patch for microsoft browsers
+      //if lt IE 8
+      script(src='js/IE8.js', type='text/javascript')
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body

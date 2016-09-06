@@ -114,7 +114,8 @@ var _ = require('underscore');
                     console.log(err)
                   }
 
-                  // 如果分类改变了。则需要
+                  // bug
+                  // todo fix 如果分类改变了,流程有问题
 
                   res.redirect('/admin/cate/list')
 

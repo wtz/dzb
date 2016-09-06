@@ -1,0 +1,47 @@
+extends ./layout
+block content
+  form(method="post",action="/admin/worker/add")
+    table#xinwentianjia(summary='新闻添加')
+      caption
+        | 工作人员添加
+      tbody
+        tr
+          td.mytd(align='center', valign='middle')
+            label(for='username') 姓名：
+          td
+            input(type='text', name='employees[name]')
+        tr
+          td.mytd(align='center', valign='middle')
+            label(for='newpasswords') 职务：
+          td
+            select(name='employees[duty]')
+              option(value='主任') 主任
+              option(value='副主任') 副主任
+              option(value='主任科员') 主任科员
+              option(value='小车队队长') 小车队队长
+              option(value='科员') 科员
+              option(value='打字员') 打字员
+              option(value='车队司机') 车队司机
+              option(value='收发室工作人员') 收发室工作人员 
+        tr
+          td.mytd(align='center', valign='middle') 工作职责：
+          td  
+            textarea(name='employees[repon]', cols='45', rows='10', style='overflow:hidden;', onkeydown='gbcount(this.form.e_respon,this.form.total,this.form.used,this.form.remain);', onkeyup='gbcount(this.form.e_respon,this.form.total,this.form.used,this.form.remain);')
+            p
+              | 最多字数：
+              input.inputtext(disabled='', maxlength='4', name='total', size='3', value='150')
+              | 已用字数：
+              input.inputtext(disabled='', maxlength='4', name='used', size='3', value='0')
+              | 剩余字数：
+              input.inputtext(disabled='', maxlength='4', name='remain', size='3', value='50')
+        tr
+          td.mytd(align='center', valign='middle') 办公地点：
+          td(valign='top')
+            input(type='text', name='employees[location]')
+        tr
+          td  
+          td
+            label
+              input#sure(type='submit', name='sure', value='确认')
+            label
+              input#reset(type='reset', name='reset', value='重填')

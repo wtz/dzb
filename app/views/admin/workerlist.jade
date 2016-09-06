@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  table#xinwenyulan(width='700', summary='xwyl')
+      caption
+        | 工作人员编辑
+      thead
+        tr
+          th(width='57')  
+          th(width='510') 标题
+          th(width='117') 操作
+      tbody
+        each work in employees
+          tr
+            td(align='center') 1
+            td= work.name
+            td.sed
+              span.sed
+                a(href='/admin/worker/edit/#{work._id}') 编辑
+              a(href='/admin/worker/delete/#{work._id}', title='删除') 删除
+          

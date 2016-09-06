@@ -1,5 +1,98 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #wrapper
+     include header
+     #content
+        #left_bar
+          script(language='javascript', type='text/javascript').
+            var a;
+            a=parseInt(Math.random()*6+1);
+            var url;
+            url=a+".gif";
+            document.write ('<img src="images/pic/'+url+'"/>');
+         #main_con
+          #main_left
+            p(style='height:18px; width:465px;  background:#fdffe3')
+            #each_meeting
+              table(width='100%', height='135')
+                tr
+                  td(width='28%', style='padding-left:15px; ')
+                    div(style='padding-bottom:14px;')
+                      img(src='images/index_16.gif', alt='每周会议', border='0', usemap='#Map3')
+                    div
+                      img(src='images/index_24.gif', alt='每周会议')
+                  td(width='72%', valign='baseline')
+                    ul#meetingl_list
+                      li
+                        a(href='content_ggxx.php?c_id=23', target='_blank', title='标题：2009—2010学年上学期第13周校领导会议活动安排&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
+                          span.date 2009-11-26
+                          | 2009—2010学年上学期第13周校领导...
+            #news
+              p(style='text-align:center;')
+                table(cellspacing='0', cellpadding='0', width='458', height='28', align='center', background='images/fgw_73.gif', border='0')
+                  tbody
+                    tr
+                      td#tabXMHZGG.main_title3(onmouseover="XMGGTableMouseOver('tabXMHZGG');", align='center', width='134', background='images/d_64.gif', height='28') 教育新闻动态
+                      td#tabXMSPGG.main_title4(onmouseover="XMGGTableMouseOver('tabXMSPGG');", align='center', width='134', background='images/d_65.gif') 部门新闻动态
+                      td(align='right', background='images/d_66.gif')
+                        a#aXMHZ(href='xwdt.php?t_kind=部门新闻') 更多…
+              ul#tabXMHZGGlist
+                li
+                  a(href='content_news.php?n_id=39', target='_blank', title='标题：第十七次全省高校党建暨大学生思想政治教育工作会议召开&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
+                    span.date 2009-11-26
+                    | 第十七次全省高校党建暨大学生思想政治教育工作会议召开
+              ul#tabXMSPGGlist(style='display:none;')
+                li
+                  a(href='content_news.php?n_id=55', target='_blank', title='标题：关于印发《湖北师范学院甲型H1N1流感防控工作方案》的通知&#10作者：湖北师范学院党政办公室&#10时间：2009-11-27')
+                    span.date 2009-11-27
+                    | 关于印发《湖北师范学院甲型H1N1流感防控工作方案》的通知
+            #workguid
+              table(height='116')
+                tr
+                  td(width='117', height='28')  
+                  td(width='126')  
+                  td(width='199')  
+                tr
+                  td(height='25', align='right', valign='bottom')
+                    a(href='content_workguid.php?w_id=10', target='_blank') 用印管理
+                  td(height='25', align='right', valign='bottom')
+                    a(href='content_workguid.php?w_id=11', target='_blank') 会议安排
+                  td(height='25', align='center', style='padding-right:13px;', valign='bottom')
+                    a(href='content_workguid.php?w_id=12', target='_blank') 请示报告
+                tr
+                  td(height='25', align='right', valign='bottom')
+                    a(href='content_workguid.php?w_id=13', target='_blank') 校内发文
+                  td(height='25', align='right', valign='bottom')
+                    a(href='content_workguid.php?w_id=14', target='_blank') 文件传阅
+                  td(height='25', align='right')  
+                tr
+                  td(height='18', align='right', valign='bottom')
+                  td(height='18', align='right', valign='bottom')
+                  td  
+          #main_right
+            p(style='height:15px; width:160px; background:#fdffe3')
+            #border
+              #note
+                div(style='padding-left:5px;')
+                  img(src='images/index_19.gif', alt='通知公告', border='0', usemap='#Map2')
+                  map#Map2(name='Map2')
+                    area(shape='rect', coords='98,12,135,23', href='ggxx.php?t_kind=%E9%80%9A%E7%9F%A5%E5%85%AC%E5%91%8A\
+                    ')
+                #myscroll
+                  ul
+                    li
+                      a(href='content_ggxx.php?c_id=17', target='_blank', title=' 标题 :省教育厅关于做好雨雪冰冻灾害天气防范工作的通知') 省教育厅关于做好雨雪...
+                script(type='text/javascript', src='js/marquee.js')
+              #email
+                img(src='images/index_29.gif', border='0', usemap='#Map')
+                map#Map(name='Map')
+                  area(shape='rect', coords='1,1,156,43', href='mailto:hbnu@email.hbnu.edu.cn')
+                  area(shape='rect', coords='3,46,155,89', href='mailto:hbnudzb@163.com')
+                  area(shape='rect', coords='2,93,156,134', href='#')
+              #links
+                select#links_top(name='menu1', onchange='if(this.selectedIndex && this.selectedIndex!=0){window.open(this.value);}this.selectedIndex=0;')
+                  option(selected='selected') --校内链接--
+                  option(value='http://www.dzb.hbnu.edu.cn/') 党政办公室
+          .clear
+        .clear        
