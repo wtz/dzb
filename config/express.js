@@ -22,6 +22,9 @@ module.exports = function(app, config) {
    
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'jade');
+  // 时间格式化处理
+  app.locals.moment = require('moment')
+
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));

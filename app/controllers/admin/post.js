@@ -59,7 +59,8 @@ var _ = require('underscore');
  //  添加新文章
  router.post('/add', function(req, res, next) {
     var postForm  = req.body.post;
-    var  categoryId =   postForm.category;
+    var  categoryId =   postForm.category;  // 选择的是那个分类
+    console.log('buxw:',postForm)
     var _post = new Post(postForm);
 
     _post.save(function(err, post) {

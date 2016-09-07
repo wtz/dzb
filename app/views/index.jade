@@ -24,10 +24,11 @@ block content
                       img(src='images/index_24.gif', alt='每周会议')
                   td(width='72%', valign='baseline')
                     ul#meetingl_list
-                      li
-                        a(href='content_ggxx.php?c_id=23', target='_blank', title='标题：2009—2010学年上学期第13周校领导会议活动安排&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
-                          span.date 2009-11-26
-                          | 2009—2010学年上学期第13周校领导...
+                      each mett in mettings	
+                        li
+                          a(href='content_ggxx.php?c_id=23', target='_blank', title='标题：2009—2010学年上学期第13周校领导会议活动安排&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
+                            span.date #{moment(mett.meta.createAt).format('MM/DD/YYYY')}
+                            = mett.title
             #news
               p(style='text-align:center;')
                 table(cellspacing='0', cellpadding='0', width='458', height='28', align='center', background='images/fgw_73.gif', border='0')
@@ -36,17 +37,19 @@ block content
                       td#tabXMHZGG.main_title3(onmouseover="XMGGTableMouseOver('tabXMHZGG');", align='center', width='134', background='images/d_64.gif', height='28') 教育新闻动态
                       td#tabXMSPGG.main_title4(onmouseover="XMGGTableMouseOver('tabXMSPGG');", align='center', width='134', background='images/d_65.gif') 部门新闻动态
                       td(align='right', background='images/d_66.gif')
-                        a#aXMHZ(href='xwdt.php?t_kind=部门新闻') 更多…
+                        a#aXMHZ(href='/posts?type=部门新闻') 更多…
               ul#tabXMHZGGlist
-                li
-                  a(href='content_news.php?n_id=39', target='_blank', title='标题：第十七次全省高校党建暨大学生思想政治教育工作会议召开&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
-                    span.date 2009-11-26
-                    | 第十七次全省高校党建暨大学生思想政治教育工作会议召开
+                each edu in edus	
+                  li
+                    a(href='content_news.php?n_id=39', target='_blank', title='标题：第十七次全省高校党建暨大学生思想政治教育工作会议召开&#10作者：湖北师范学院党政办公室&#10时间：2009-11-26')
+                      span.date  #{moment(edu.meta.createAt).format('MM/DD/YYYY')}
+                      = edu.title
               ul#tabXMSPGGlist(style='display:none;')
-                li
-                  a(href='content_news.php?n_id=55', target='_blank', title='标题：关于印发《湖北师范学院甲型H1N1流感防控工作方案》的通知&#10作者：湖北师范学院党政办公室&#10时间：2009-11-27')
-                    span.date 2009-11-27
-                    | 关于印发《湖北师范学院甲型H1N1流感防控工作方案》的通知
+                each dep in deps	
+                  li
+                    a(href='content_news.php?n_id=55', target='_blank', title='标题：关于印发《湖北师范学院甲型H1N1流感防控工作方案》的通知&#10作者：湖北师范学院党政办公室&#10时间：2009-11-27')
+                      span.date #{moment(dep.meta.createAt).format('MM/DD/YYYY')}
+                      = dep.title
             #workguid
               table(height='116')
                 tr
@@ -81,8 +84,9 @@ block content
                     ')
                 #myscroll
                   ul
+                  each note in notes	
                     li
-                      a(href='content_ggxx.php?c_id=17', target='_blank', title=' 标题 :省教育厅关于做好雨雪冰冻灾害天气防范工作的通知') 省教育厅关于做好雨雪...
+                      a(href='content_ggxx.php?c_id=17', target='_blank', title=' 标题 :省教育厅关于做好雨雪冰冻灾害天气防范工作的通知')= note.title
                 script(type='text/javascript', src='js/marquee.js')
               #email
                 img(src='images/index_29.gif', border='0', usemap='#Map')

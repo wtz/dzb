@@ -1,0 +1,25 @@
+extends ./layout
+block content
+  #wrapper
+    include header
+    #content
+      include sider
+      #main_con2
+        p#top_nav
+          table(width='500')
+            tr
+              td(width='285', style='padding-left:20px;')= type
+              td(width='18')
+                img(src='images/list.gif', width='11', height='14')
+              td(width='37') 首页
+              td(width='10') >
+              td(width='127', align='left') 新闻动态
+        p#line
+        ul#sub_list
+         each post in posts
+          li
+            a(href='/detail/#{post._id}', target='_blank')
+              span.date #{post.meta.updateAt}
+              = post.title
+      .clear
+     include footer

@@ -1,0 +1,35 @@
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    title 湖北师范学院党政办公室--
+    style(type='text/css').
+      #text img
+      {max-width: 580px;max-height: 580px;} /* for Firefox & IE7 */
+      * html #text img { /* for IE6 */
+      width: expression(this.width > 580 && this.width > this.height ? 580 : auto);
+      height: expression(this.height > 300 ? 300 : auto);
+      overflow:hidden;
+    link(href='../css/globel.css', rel='stylesheet', type='text/css')
+    link(href='../css/layout2.css', rel='stylesheet', type='text/css')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+  body
+    #wrapper
+      #head
+        a(href='#top')
+          img(src='../images/top.gif', alt='湖北师范学院党政办公室', width='830', height='42')
+      #content
+        h2= article.title
+        p#date 
+          | 发布时间 #{moment(article.meta.updateAt).format('YYYY-MM-DD')}
+          | 阅读次数 #{article.pv}
+          | 文章来源 
+        div.con
+          = article.content 
+
+      #comment
+            
+      #footer
+        p#copyrights 版权所有：湖北师范学院党政办公室
+        p CopyRights ©2009-2010 All Rights Reserved
+    #wwei_dialog
+
