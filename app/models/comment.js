@@ -1,6 +1,8 @@
-// 评论
+// 评论 和 回复 
 // 1篇文章 可以有多个用户评论
 //  1个用户可以评论该文章，也可以对其他用户的评论进行评论。
+//  根据文章id 找到 改篇文章，然后根据文章id, comment 去查询 comment
+//  
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
